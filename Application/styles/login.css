@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #000000;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.brand {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.brand img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    display: block;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 380px;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    background: rgba(12, 12, 12, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    overflow: hidden;
+}
+
+.container::before {
+    content: "";
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: min(65vw, 560px);
+    height: min(65vw, 560px);
+    transform: translate(-50%, -50%);
+    background-image: url("../assets/logo/school-logo.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container > * {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+p {
+    color: #d8d8d8;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 8px;
+    border: 1px solid #555;
+    border-radius: 10px;
+    background: rgba(25, 25, 25, 0.95);
+    color: #fff;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #b7b7b7;
+}
+
+button {
+    width: 95%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #d85ca8;
+    color: #111;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #d85ca8;
+}
+
+.switch span {
+    color: #d85ca8;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.form-panel {
+    display: none;
+}
+
+.form-panel.active {
+    display: block;
+}
+

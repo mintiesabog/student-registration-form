@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2>Student Portal</h2>
+
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="profile.html">My Profile</a>
+        <a href="student-registration-form.html">Registration</a>
+        <a href="subjects.html">Subjects</a>
+        <a href="schedule.html">Schedule</a>
+
+        <a href="login.html" class="logout" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="main">
+
+        <h1 id="dashboardGreeting">Welcome, Student!</h1>
+        <p>Here's an overview of your student account.</p>
+
+        <div class="cards">
+
+            <a class="card" href="subjects.html">
+                <h3>Subjects</h3>
+                <h2>6</h2>
+                <p>Enrolled Subjects</p>
+            </a>
+
+            <a class="card" href="schedule.html">
+                <h3>Schedule</h3>
+                <h2>5</h2>
+                <p>Classes This Week</p>
+            </a>
+
+            <a class="card" href="student-registration-form.html">
+                <h3>Registration</h3>
+                <h2>✓</h2>
+                <p>Registered</p>
+            </a>
+
+        </div>
+
+        <div class="profile">
+
+            <h2>Student Information</h2>
+
+            <p><b>Student ID:</b> 2026-00125</p>
+            <p><b>Name:</b> <span id="studentName">Student</span></p>
+            <p><b>Course:</b> BS Information Technology</p>
+            <p><b>Year Level:</b> 1st Year</p>
+            <p><b>Email:</b> student@email.com</p>
+
+            <a class="button" href="profile.html">Edit Profile</a>
+
+        </div>
+
+        <div class="timeline-history">
+            <h2>Timeline History</h2>
+            <div id="timelineList" class="timeline-list"></div>
+            <button type="button" onclick="clearTimelineHistory()">Clear History</button>
+        </div>
+
+        <div class="announcements">
+
+            <h2>Announcements</h2>
+
+            <p>• Enrollment for the next semester will begin soon.</p>
+            <p>• Please check your class schedule regularly.</p>
+            <p>• Don't forget to complete your student requirements.</p>
+
+        </div>
+
+    </div>
+
+    <script>
+        const TIMELINE_HISTORY_KEY = "timelineHistory";
+
+        function getTimelineHistory() {
+            try {
+                return JSON.parse(localStorage.getItem(TIMELINE_HISTORY_KEY) || "[]");
+            } catch {
+                return [];
+            }
+        }
+
+        function renderTimelineHistory() {
+            const timelineList = document.getElementById("timelineList");
+            if (!timelineList) return;
+
+            const history = getTimelineHistory();
+
+            if (!history.length) {
+                timelineList.innerHTML = "<p class='empty-history'>No recent timeline activity.</p>";
+                return;
+            }
+
+            timelineList.innerHTML = history
+                .map(item => `<div class="timeline-item">${item}</div>`)
+                .join("");
+        }
+
+        function clearTimelineHistory() {
+            localStorage.removeItem(TIMELINE_HISTORY_KEY);
+            localStorage.removeItem("studentUser");
+            localStorage.removeItem("studentProfile");
+            renderTimelineHistory();
+        }
+
+        function logout() {
+            localStorage.removeItem("studentUser");
+            localStorage.removeItem("studentProfile");
+            localStorage.removeItem(TIMELINE_HISTORY_KEY);
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const greeting = document.getElementById("dashboardGreeting");
+            try {
+                const user = JSON.parse(localStorage.getItem("studentUser") || "null");
+                const profile = JSON.parse(localStorage.getItem("studentProfile") || "null");
+                const name = profile?.name || user?.name || user?.username || "Student";
+                greeting.textContent = `Welcome, ${name}!`;
+                document.getElementById("studentName").textContent = name;
+            } catch {
+                greeting.textContent = "Welcome, Student!";
+                document.getElementById("studentName").textContent = "Student";
+            }
+
+            const savedHistory = getTimelineHistory();
+            if (!savedHistory.length) {
+                localStorage.setItem(TIMELINE_HISTORY_KEY, JSON.stringify([
+                    "Logged in to the Student Portal",
+                    "Opened the dashboard",
+                    "Reviewed enrollment details"
+                ]));
+            }
+            renderTimelineHistory();
+        });
+    </script>
+
+</body>
+</html>

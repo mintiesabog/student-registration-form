@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.brand {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.brand img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: transparent;
+    padding: 0;
+    box-shadow: transparent;
+    border: none;
+    opacity: 1;
+    display: block;
+}
+
+.form-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto;
+    background: #f891e5;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 0px 0px rgba(146, 139, 139, 0.12);
+    border: 1px solid rgba(132, 118, 118, 0.08);
+    overflow: hidden;
+}
+
+.form-container::before {
+    content: "";
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: min(72vw, 760px);
+    height: min(72vw, 760px);
+    transform: translate(-50%, -50%);
+    background-image: url("../assets/logo/school-logo.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.form-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+h2 { text-align: center; color: #111111; }
+.form-help { text-align: center; color: #555555; margin-bottom: 25px; }
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-weight: bold; color: #222222; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: #111111;
+}
+.radio-group { display: flex; gap: 15px; margin-top: 5px; color: #222222; }
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #f891e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-submit:hover { background-color: #f4f3f2; }
+.success-message { color: #ffffff; font-weight: bold; text-align: center; margin-top: 20px; }
+.json-output { background: rgba(17,17,17,0.9); border: 1px solid #333; color: #fff; padding: 15px; overflow-x: auto; white-space: pre-wrap; }
+
+/* Transparent overlay style for a dedicated overlay page */
+.transparent-overlay-page {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.transparent-overlay-page .overlay-box {
+    background: rgb(249, 249, 249);
+    color: #ffffff;
+    padding: 20px 40px;
+    border-radius: 12px;
+    border: 2px solid rgb(234, 108, 213);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(4px);
+    text-align: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+.transparent-overlay-page .overlay-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #00ffcc;
+}
+
+.transparent-overlay-page .overlay-subtitle {
+    font-size: 16px;
+    opacity: 1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}

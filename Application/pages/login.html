@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <link rel="stylesheet" href="../styles/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="brand" aria-label="School logo">
+            <img src="../assets/logo/school-logo.jpeg" alt="School logo">
+        </div>
+
+        <div id="loginForm" class="form-panel active">
+            <h1>Welcome Back,Student!</h1>
+            <p>Login to your account</p>
+
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+
+            <button type="button" onclick="login()">Login</button>
+
+            <p class="switch">
+                Don't have an account?
+                <span id="showSignupLink" onclick="showSignup()">Sign Up</span>
+            </p>
+        </div>
+
+        <div id="signupForm" class="form-panel">
+            <h1>Create Account</h1>
+            <p>Sign up to get started</p>
+
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="text" id="signupUsername" placeholder="Username">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="signupPassword" placeholder="Password">
+
+            <button type="button" onclick="signup()">Sign Up</button>
+
+            <p class="switch">
+                Already have an account?
+                <span id="showLoginLink" onclick="showLogin()">Login</span>
+            </p>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

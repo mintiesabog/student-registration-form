@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <script src="student-data.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Student Portal</h2>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="profile.html" class="active">My Profile</a>
+        <a href="student-registration-form.html">Registration</a>
+        <a href="subjects.html">Subjects</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="login.html" class="logout" onclick="logout()">Logout</a>
+    </div>
+    <main class="main">
+        <h1>My Profile</h1>
+        <p>Keep your student information up to date.</p>
+        <form class="profile profile-form" id="profile-form">
+            <label for="profile-name">Name</label>
+            <input id="profile-name" type="text" required>
+            <label for="profile-course">Course</label>
+            <input id="profile-course" type="text" required>
+            <label for="profile-year">Year Level</label>
+            <select id="profile-year" required>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+            </select>
+            <label for="profile-email">Email</label>
+            <input id="profile-email" type="email" required>
+            <button type="submit">Save Changes</button>
+            <p id="profile-status" class="status" role="status"></p>
+        </form>
+    </main>
+    <script>
+        const profileForm = document.getElementById("profile-form");
+        const profile = getStudentProfile();
+
+        document.getElementById("profile-name").value = profile.name;
+        document.getElementById("profile-course").value = profile.course;
+        document.getElementById("profile-year").value = profile.year;
+        document.getElementById("profile-email").value = profile.email;
+
+        profileForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            localStorage.setItem("studentProfile", JSON.stringify({
+                name: document.getElementById("profile-name").value.trim(),
+                course: document.getElementById("profile-course").value.trim(),
+                year: document.getElementById("profile-year").value.trim(),
+                email: document.getElementById("profile-email").value.trim()
+            }));
+            document.getElementById("profile-status").textContent = "Profile saved successfully.";
+        });
+
+        function logout() {
+            localStorage.removeItem("studentUser");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+body {
+    /* Replace 'logo.png' with the actual path to your logo image */
+    background-image: urlhunjtvgr'); 
+    
+    /* 🌟 This line freezes the background logo so it won't slide */
+    background-attachment: fixed; 
+    
+    /* Centering and sizing the background logo */
+    background-position: center;   /* Keeps it centered */
+    background-repeat: no-repeat;  /* Prevents the logo from tiling/repeating */
+    background-size: contain;      /* Scales the logo to fit nicely; change to 'cover' if needed */
+    background-transparent: true; /* Ensures the background is transparent if the logo has transparency */
+}   

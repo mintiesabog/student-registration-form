@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Schedule</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <script src="student-data.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Student Portal</h2>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="profile.html">My Profile</a>
+        <a href="student-registration-form.html">Registration</a>
+        <a href="subjects.html">Subjects</a>
+        <a href="schedule.html" class="active">Schedule</a>
+        <a href="login.html" class="logout" onclick="logout()">Logout</a>
+    </div>
+    <main class="main">
+        <h1>Class Schedule</h1>
+        <p id="year-label">Your classes for this week.</p>
+        <section class="table-panel">
+            <table>
+                <thead><tr><th>Day</th><th>Time</th><th>Subject</th><th>Room</th></tr></thead>
+                <tbody id="schedule-list"></tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        const scheduleProfile = getStudentProfile();
+        const scheduleList = document.getElementById("schedule-list");
+        document.getElementById("year-label").textContent = `${scheduleProfile.year} schedule for this week.`;
+
+        getCurrentSubjects().forEach((subject) => {
+            const row = document.createElement("tr");
+            [subject.day, subject.time, subject.name, subject.room].forEach((value) => {
+                const cell = document.createElement("td");
+                cell.textContent = value;
+                row.appendChild(cell);
+            });
+            scheduleList.appendChild(row);
+        });
+
+        function logout() { localStorage.removeItem("studentUser"); }
+    </script>
+</body>
+</html>
