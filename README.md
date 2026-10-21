@@ -6,7 +6,7 @@ A static website (HTML/CSS/JS) located in `Application/`, with `Application/inde
 
 The site is deployed by `.github/workflows/pages.yml`, which publishes the `Application/` folder on every push to `main`.
 
-Live URL: `https://mintiesabog.github.io/student-registration-form/`
+Live website: [Open the student registration form](https://mintiesabog.github.io/student-registration-form/)
 
 ### Setup (one time)
 1. Go to **Settings → Pages** in the repository.
